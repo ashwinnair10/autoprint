@@ -1,6 +1,11 @@
 {
   "name": "autoprint",
   "license": "MIT",
+  "publisher": "ashwinnair10",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashwinnair10/autoprint"
+  },
   "displayName": "autoprint",
   "description": "Generate debug print statements automatically.",
   "version": "0.0.1",
@@ -44,7 +49,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.120.0",
+    "@types/vscode": "^1.117.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "typescript-eslint": "^8.56.1",
