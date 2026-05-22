@@ -15,6 +15,8 @@ Place your cursor on a variable (or select one), press a shortcut, and AutoPrint
 - Right-click context menu support
 - Fast debug logging workflow
 - Automatic `fmt` import handling for Go
+- AUTOPRINT tagging for generated logs
+- Removes all AutoPrint-generated logs automatically
 
 ---
 
@@ -58,6 +60,7 @@ Ctrl + Alt + Z
 Generated:
 
 ```python
+# AUTOPRINT
 print(f"totalPrice = {totalPrice}")
 ```
 
@@ -76,19 +79,19 @@ Press shortcut.
 Generated:
 
 ```js
+// AUTOPRINT
 console.log("userName =", userName);
 ```
 
 ---
 
-# Keyboard Shortcut
+# Keyboard Shortcuts
 
-| Platform        | Shortcut         |
-| --------------- | ---------------- |
-| Windows / Linux | `Ctrl + Alt + Z` |
-| macOS           | `Cmd + Alt + Z`  |
+| Action        | Windows / Linux  | macOS           |
+| ------------- | ---------------- | --------------- |
+| Generate Logs | `Ctrl + Alt + Z` | `Cmd + Alt + Z` |
 
-You can customize this in VS Code Keyboard Shortcuts.
+You can customize shortcuts in VS Code Keyboard Shortcuts.
 
 ---
 
@@ -98,6 +101,12 @@ Right click inside the editor and choose:
 
 ```text
 Generate Print Statement
+```
+
+or
+
+```text
+Remove AutoPrint Statements
 ```
 
 ---
@@ -115,6 +124,18 @@ if it does not already exist in the file.
 ---
 
 # Installation
+
+## From Marketplace
+
+Search for:
+
+```text
+AutoPrint
+```
+
+inside the VS Code Extensions marketplace.
+
+---
 
 ## From VSIX
 
@@ -197,12 +218,13 @@ vsce package
 
 # Planned Features
 
-- Remove all AutoPrint logs
 - Smart object logging
 - Multi-variable support
 - AST-aware print generation
 - Configurable templates
 - More language support
+- Smarter C printf generation
+- Snippet-based insertion
 
 ---
 

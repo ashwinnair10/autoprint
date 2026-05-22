@@ -8,7 +8,7 @@
   },
   "displayName": "autoprint",
   "description": "Generate debug print statements automatically.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.117.0"
   },
@@ -22,6 +22,10 @@
       {
         "command": "autoprint.generatePrint",
         "title": "Generate Print Statement"
+      },
+      {
+        "command": "autoprint.removePrints",
+        "title": "Remove AutoPrint Statements"
       }
     ],
     "keybindings": [
@@ -35,6 +39,10 @@
       "editor/context": [
         {
           "command": "autoprint.generatePrint",
+          "group": "navigation"
+        },
+        {
+          "command": "autoprint.removePrints",
           "group": "navigation"
         }
       ]
