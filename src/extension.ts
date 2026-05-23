@@ -93,10 +93,10 @@ export function activate(context: vscode.ExtensionContext) {
 
             const document = editor.document;
             const fullText = document.getText();
-            const cleaned = fullText.replace(
-                /^\s*(\/\/|#)\sAUTOPRINT.*\r?\n\s*.*\r?\n?/gm,
-    ''
-            );
+            const cleaned = fullText
+                .split(/\r?\n/)
+                .filter(line => !line.includes('AUTOPRINT'))
+                .join('\n');
             const fullRange = new vscode.Range(
                 document.positionAt(0),
                 document.positionAt(fullText.length)
@@ -124,44 +124,44 @@ function generatePrint(
     switch (language) {
 
         case 'python':
-            return `${indentation}# AUTOPRINT\n${indentation}print(f"${variable} = {${variable}}")`;
+            return `${indentation}print(f"${variable} = {${variable}}") # AUTOPRINT`;
 
         case 'javascript':
         case 'typescript':
         case 'javascriptreact':
         case 'typescriptreact':
-            return `${indentation}// AUTOPRINT\n${indentation}console.log('${variable} =', ${variable});`;
+            return `${indentation}console.log('${variable} =', ${variable}); // AUTOPRINT`;
 
         case 'java':
-            return `${indentation}// AUTOPRINT\n${indentation}System.out.println("${variable} = " + ${variable});`;
+            return `${indentation}System.out.println("${variable} = " + ${variable}); // AUTOPRINT`;
 
         case 'c':
-            return `${indentation}// AUTOPRINT\n${indentation}printf("${variable} (debug format string warning)\\n");`;
+            return `${indentation}printf("${variable} (debug format string warning)\\n"); // AUTOPRINT`;
 
         case 'cpp':
-            return `${indentation}// AUTOPRINT\n${indentation}std::cout << "${variable} = " << ${variable} << std::endl;`;
+            return `${indentation}std::cout << "${variable} = " << ${variable} << std::endl; // AUTOPRINT`;
 
         case 'csharp': 
-            return `${indentation}// AUTOPRINT\n${indentation}Console.WriteLine($"${variable} = {${variable}}");`;
+            return `${indentation}Console.WriteLine($"${variable} = {${variable}}"); // AUTOPRINT`;
 
         case 'go':
-            return `${indentation}// AUTOPRINT\n${indentation}fmt.Printf("${variable} = %v\\n", ${variable})`;
+            return `${indentation}fmt.Printf("${variable} = %v\\n", ${variable}) // AUTOPRINT`;
 
         case 'rust':
-            return `${indentation}// AUTOPRINT\n${indentation}println!("${variable} = {:?}", ${variable});`;
+            return `${indentation}println!("${variable} = {:?}", ${variable}); // AUTOPRINT`;
 
         case 'php':
-            return `${indentation}// AUTOPRINT\n${indentation}echo '${variable} = ' . var_export(\$${variable}, true) . "\\n";`;
+            return `${indentation}echo '${variable} = ' . var_export(\$${variable}, true) . "\\n"; // AUTOPRINT`;
 
         case 'ruby':
-            return `${indentation}# AUTOPRINT\n${indentation}puts "${variable} = #{${variable}.inspect}"`;
+            return `${indentation}puts "${variable} = #{${variable}.inspect}" # AUTOPRINT`;
 
         case 'swift':
-            return `${indentation}// AUTOPRINT\n${indentation}print("${variable} =", ${variable})`;
+            return `${indentation}print("${variable} =", ${variable}) // AUTOPRINT`;
 
         case 'kotlin':
         case 'kotlinscript':
-            return `${indentation}// AUTOPRINT\n${indentation}println("${variable} = $${variable}")`;
+            return `${indentation}println("${variable} = $${variable}") // AUTOPRINT`;
 
         default:
             return null;
