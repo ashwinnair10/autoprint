@@ -12,3 +12,7 @@
 - Added AUTOPRINT tagging
 - Added Remove AutoPrint Statements command
 - Improved log cleanup regex for Windows line endings
+
+## 0.0.3
+
+- Fixed AUTOPRINT tagging to support proper removal
