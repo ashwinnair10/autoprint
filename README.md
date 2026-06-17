@@ -216,18 +216,6 @@ vsce package
 
 ---
 
-# Planned Features
-
-- Smart object logging
-- Multi-variable support
-- AST-aware print generation
-- Configurable templates
-- More language support
-- Smarter C printf generation
-- Snippet-based insertion
-
----
-
 # Contributing
 
 Pull requests and feature suggestions are welcome.
